@@ -1,20 +1,18 @@
-from utils.import_data import import_data
-from utils.clean_data import clean_data
-from utils.join_data import join_data
-from utils.model_data import prepare_model_data
-
-def main():
-    # Import raw data
-    raw_data = import_data()
-
-    # Clean the data
-    cleaned_data = clean_data(raw_data)
-
-    # Join data
-    joined_data = join_data(cleaned_data)
-
-    # Prepare model data
-    prepare_model_data(joined_data)
+from utils.data_prep import DataPrep
 
 if __name__ == "__main__":
-    main()
+    # Import raw data
+    raw_data = DataPrep.import_data()
+    
+    # Clean data
+    cleaned_data = DataPrep.clean_data(raw_data)
+    
+    # Join data
+    joined_data = DataPrep.join_data(cleaned_data)
+    
+    # Model data
+    model_data = DataPrep.model_data(cleaned_data)
+    
+    # Write to CSV files
+    raw_data.to_csv('./source/raw_data.csv', index=False)
+    model_data.to_csv('./source/model_data.csv', index=False)
