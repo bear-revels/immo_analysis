@@ -1,1 +1,2 @@
-source/REFNIS_CODES.geojson
+data/external_data/REFNIS_CODES.geojson
+source/__pycache__/
